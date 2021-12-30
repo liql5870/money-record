@@ -26,10 +26,10 @@ export default class Nav extends Vue {
 <style lang="scss" scoped>
 @import "~@/assets/styles/helper.scss";
  nav{
+   @extend %outerShadow;
    display: flex;
-   box-shadow: 0 0 3px rgba(0,0,0,0.5);
    font-size: 12px;
-  flex-direction: row;
+   flex-direction: row;
     > .item{
       padding: 2px 0;
       width:33.3333%;
