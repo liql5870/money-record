@@ -31,15 +31,14 @@ const routes: Array<RouteConfig> = [
     component:Statistics
   },
   {
+    path:'/labels/edit/:id',
+    component:EditLabel,
+  },
+  {
     path:'*',
     name:'NotFound',
     component:NotFound,
   },
-  {
-    path:'/labels/edit/:id',
-    component:EditLabel,
-  }
-
 ]
 
 const router = new VueRouter({
