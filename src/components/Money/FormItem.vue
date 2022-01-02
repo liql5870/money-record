@@ -15,9 +15,9 @@ import {Component, Prop, Vue,Watch} from "vue-property-decorator"
 
 @Component
 export default class FormItem extends Vue {
-  value =""
+  @Prop({default:''}) value !:string
 
-  @Prop({require:'字段名'})fieldName!:string;
+  @Prop({required:true})fieldName!:string;
   @Prop()placeholder?:string;
 
   @Watch('value')
