@@ -6,9 +6,9 @@
     <ul class="current">
       <li
           v-for="tag in dataSource"
-          :key="tag"
+          :key="tag.id"
           :class="{selected:selectedTags.indexOf(tag) >=0}"
-          @click="toggle(tag)">{{tag}}
+          @click="toggle(tag)">{{tag.name}}
       </li>
     </ul>
   </div>
@@ -34,17 +34,12 @@ export default class Tags extends Vue {
     const name = window.prompt('请输入标签名');
     if(name === ''){
       window.alert('标签名不能为空')
-    }else{
-      if(this.dataSource){
-        this.dataSource.push(name!) // 不能修改外部数据
-      }else{
-        if(this.dataSource){
+    }else if(this.dataSource){
         this.$emit('updata:dataSource',[...this.dataSource,name])
         }
       }
     }
-  }
-}
+
 </script>
 
 <style lang="scss" scoped>

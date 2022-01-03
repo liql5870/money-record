@@ -11,7 +11,7 @@
 
     <Tags :data-source.sync="tags" @update:value ="onUpdateTags"/>
   </layout>
-</template>p
+</template>
 
 <script lang="ts" >
 
@@ -25,13 +25,7 @@ import {Component, Watch} from "vue-property-decorator";
 import  recordListModel  from "@/models/recordListModel";
 import tagListModel from "@/models/tagListModel";
 
-type RecordItem = {
-  tags:string[]
-  notes:string
-  type:string
-  amount:number
-  createdAt ?:Date
-}
+
 const recordList = recordListModel.fetch()
 const tagList = tagListModel.fetch()
 
@@ -41,8 +35,10 @@ const tagList = tagListModel.fetch()
     }
 )
 export default class Money extends Vue{
-   tags=['衣','食','住','行'];
+   tags=tagList;
+  // eslint-disable-next-line no-undef
    recordList:RecordItem[] = recordList;
+  // eslint-disable-next-line no-undef
    record:RecordItem = {
      tags:[],
      notes:'',
@@ -57,18 +53,11 @@ export default class Money extends Vue{
    onUpdateNotes(value:string){
     this.record.notes = value
    }
-   onUpdateType(value:string){
-     this.record.type = value
-   }
-   onUpdateAmount(value:string){
-    this.record.amount = parseFloat(value)
-
-   }
    saveRecord(){
+     // eslint-disable-next-line no-undef
      const record2:RecordItem = recordListModel.clone(this.record)
      record2.createdAt = new Date();
      this.recordList.push(record2);
-     console.log(this.recordList)
    }
   @Watch('recordList')
      onRecordListChange(){
