@@ -8,11 +8,9 @@
                 @update:value="onUpdateNotes"
       />
     </div>
-
     <Tags :data-source.sync="tags" @update:value ="onUpdateTags"/>
   </layout>
 </template>
-
 <script lang="ts" >
 
 
@@ -23,12 +21,9 @@ import FormItem from "@/components/Money/FormItem.vue";
 import Tags from "@/components/Money/Tags.vue";
 import {Component, Watch} from "vue-property-decorator";
 import  recordListModel  from "@/models/recordListModel";
-import tagListModel from "@/models/tagListModel";
 
 
 const recordList = recordListModel.fetch()
-
-
 @Component(
     {
       components: {FormItem, Tags, Types, NumberPad,},
