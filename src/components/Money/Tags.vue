@@ -5,74 +5,90 @@
     </div>
     <ul class="current">
       <li
-          v-for="tag in dataSource"
+          v-for="tag in taglist "
           :key="tag.id"
           :class="{selected:selectedTags.indexOf(tag) >=0}"
-          @click="toggle(tag)">{{tag.name}}
+          @click="toggle(tag)">{{ tag.name }}
       </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
+
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
-@Component
+@Component({
+  computed:{
+    tagList(){
+      //TODO
+      // return this.$store.fetchTags();
+      return []
+    }
+  }
+})
 export default class Tags extends Vue {
-  @Prop() readonly dataSource:string[] | undefined;
-  selectedTags:string[] = [];
-  toggle(tag:string){
+  selectedTags: string[] = [];
+
+  toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag)
-    if(index >=0){
-      this.selectedTags.splice(index,1)
-    }else{
+    if (index >= 0) {
+      this.selectedTags.splice(index, 1)
+    } else {
       this.selectedTags.push(tag)
     }
-    this.$emit('update:value',this.selectedTags)
+    this.$emit('update:value', this.selectedTags)
   }
-  create(){
+
+  create() {
     const name = window.prompt('请输入标签名');
-    if(name === ''){
-      window.alert('标签名不能为空')
-    }else if(this.dataSource){
-        this.$emit('updata:dataSource',[...this.dataSource,name])
-        }
-      }
+    if (!name) {
+      return window.alert('标签名不能为空')
     }
+    // TODO
+    // store.createTag(name)
+
+  }
+}
 
 </script>
 
 <style lang="scss" scoped>
-.tags{
+.tags {
   background: white;
   font-size: 14px;
   padding: 16px;
   flex-grow: 1;
   display: flex;
   flex-direction: column-reverse;
-  > .current{
+
+  > .current {
     display: flex;
     flex-wrap: wrap;
-    > li{
-      $bg:#d9d9d9;
-      $h:48px;
-      background:#d9d9d9;
+
+    > li {
+      $bg: #d9d9d9;
+      $h: 48px;
+      background: #d9d9d9;
       height: 24px;
       line-height: $h/2;
       border-radius: 12px;
       padding: 0 16px;
       margin-right: 12px;
       margin-top: 5px;
-      &.selected{
-        background:darken($bg,50%);
-        color:white;
+
+      &.selected {
+        background: darken($bg, 50%);
+        color: white;
       }
     }
 
   }
-  > .new{
-    padding-top: 16px ;
-    button{
+
+  > .new {
+    padding-top: 16px;
+
+    button {
       background: transparent;
       border: none;
       color: #999;
