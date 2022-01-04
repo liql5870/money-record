@@ -1,8 +1,7 @@
 <template>
 <div>
   <layout>
-  <p>  statistics.vue
-  </p>
+    <Types :value.sync= "record.type" />
   </layout>
 <Nav />
 </div>
