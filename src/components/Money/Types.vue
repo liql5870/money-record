@@ -18,8 +18,6 @@ import {Component,Prop} from 'vue-property-decorator';
 @Component
 export default class Types extends Vue {
   @Prop()   value !:string
-
-
   selectType(value: string) {
     console.log('fuck you')
     if (value !== '-' && value !== '+') {

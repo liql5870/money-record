@@ -23,8 +23,14 @@
 import {Component, Vue} from "vue-property-decorator"
 import FormItem from "@/components/Money/FormItem.vue";
 import Button from "@/components/Button.vue";
+
 @Component({
-  components: {Button, FormItem}
+  components: {Button, FormItem},
+  computed:{
+    tag(){
+      return this.$store.state.currentTag
+    }
+  }
 })
 export default class EditLabel extends Vue {
   // eslint-disable-next-line no-undef
