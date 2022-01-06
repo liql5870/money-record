@@ -20,16 +20,18 @@ type DataSourceItem = {
 export default class Tabs extends Vue {
   @Prop({required: true})
   dataSource !: DataSourceItem[];
+
   @Prop(String)
   readonly value !: string;
+
   @Prop(String)
   classPrefix ?: string;
 
-  liClass(item:DataSourceItem) {
-    return{
-  selected: item.value === this.value,
-  [this.classPrefix + '-tabs-item']: this.classPrefix
-}
+  liClass(item: DataSourceItem) {
+    return {
+      [this.classPrefix + '-tabs-item']: this.classPrefix,
+      selected: item.value === this.value,
+    }
   }
 
   select(item: DataSourceItem) {
