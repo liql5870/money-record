@@ -1,7 +1,9 @@
 module.exports = {
   root: true,
-  "globals":{
-    "__WebpackModuleApi":"writable"
+  "globals": {
+    "__WebpackModuleApi": "writable",
+    "RecordItem": true,
+    "RootState": true,
   },
   env: {
     node: true
@@ -18,7 +20,8 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     '@typescript-eslint/no-var-requires': 0,
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+
   },
   overrides: [
     {
