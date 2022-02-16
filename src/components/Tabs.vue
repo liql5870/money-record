@@ -1,46 +1,49 @@
 <template>
-  <ul class='tabs' :class="{[classPrefix+'-tabs']:classPrefix}">
-    <li v-for="item in dataSource" :key="item.value"
-        :class="liClass(item)"
-        @click='select(item)'
-        class="tabs-item"
-    >{{ item.text }}
+  <ul class="tabs" :class="{ [classPrefix + '-tabs']: classPrefix }">
+    <li
+      v-for="item in dataSource"
+      :key="item.value"
+      :class="liClass(item)"
+      @click="select(item)"
+      class="tabs-item"
+    >
+      {{ item.text }}
     </li>
   </ul>
 </template>
 
-<script lang='ts'>
-import {Component, Prop, Vue} from "vue-property-decorator"
+<script lang="ts">
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 type DataSourceItem = {
-  text: string,
-  value: string
-}
+  text: string;
+  value: string;
+};
 @Component
 export default class Tabs extends Vue {
-  @Prop({required: true})
-  dataSource !: DataSourceItem[];
+  @Prop({ required: true })
+  dataSource!: DataSourceItem[];
 
   @Prop(String)
-  readonly value !: string;
+  readonly value!: string;
 
   @Prop(String)
-  classPrefix ?: string;
+  classPrefix?: string;
 
   liClass(item: DataSourceItem) {
     return {
-      [this.classPrefix + '-tabs-item']: this.classPrefix,
+      [this.classPrefix + "-tabs-item"]: this.classPrefix,
       selected: item.value === this.value,
-    }
+    };
   }
 
   select(item: DataSourceItem) {
-    this.$emit('update:value', item.value)
+    this.$emit("update:value", item.value);
   }
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .tabs {
   background: #c4c4c4;
   display: flex;
@@ -56,7 +59,7 @@ export default class Tabs extends Vue {
     position: relative;
 
     &.selected::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 0;
       left: 0;
