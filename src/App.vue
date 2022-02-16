@@ -1,6 +1,6 @@
 <template>
   <div id="app">
- <router-view></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -8,18 +8,20 @@
 @import "~@/assets/styles/helper.scss";
 @import "~@/assets/styles/reset.scss";
 
-body{
+body {
   line-height: 1.5;
-  font-family:$font-hei;
+  font-family: $font-hei;
   color: #333;
   font-size: 16px;
-  background:#f5f5f5;
+  background: #f5f5f5;
 }
-.clearfix::after{
-  content:'';
+.clearfix::after {
+  content: "";
   display: block;
-  clear:both
-
+  clear: both;
 }
-
+#app {
+  max-width: 500px;
+  margin: 0 auto;
+}
 </style>
