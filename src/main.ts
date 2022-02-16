@@ -20,6 +20,9 @@ new Vue({
 
 window.onload = function () {
   setTimeout(function () {
-    window.scrollTo(0, 10000);
+    window.scrollTo(0, 2000);
   }, 0);
 };
+if (document.documentElement.clientWidth > 500) {
+  window.alert("请用手机打开");
+}

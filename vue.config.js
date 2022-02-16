@@ -1,10 +1,11 @@
 const path = require("path");
 module.exports = {
-  publicPath: "/<REPO>/",
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/money-record-website/'
+    : '/',
   lintOnSave: false,
   chainWebpack: (config) => {
     const dir = path.resolve(__dirname, "src/assets/icons");
-
     config.module
       .rule("svg-sprite")
       .test(/\.svg$/)
