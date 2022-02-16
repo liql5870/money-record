@@ -1,8 +1,9 @@
 const path = require("path");
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/money-record-website/'
-    : '/',
+  publicPath:  '/money-record-website/',
+    // ?
+
+  // process.env.NODE_ENV === 'production'
   lintOnSave: false,
   chainWebpack: (config) => {
     const dir = path.resolve(__dirname, "src/assets/icons");
