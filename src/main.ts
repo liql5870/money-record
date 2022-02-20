@@ -23,6 +23,3 @@ window.onload = function () {
     window.scrollTo(0, 2000);
   }, 0);
 };
-if (document.documentElement.clientWidth > 500) {
-  window.alert("请用手机或F12切换至手机模式打开本页面以保证浏览效果");
-}
